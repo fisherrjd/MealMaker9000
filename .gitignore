@@ -38,3 +38,4 @@ venv.bak/
 
 
 .env
+client_secrets.json

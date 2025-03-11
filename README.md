@@ -1,2 +1,2 @@
 # MealMaker9000
-Attempting to write a cli tool for meal plan ideas for cutting / bulking!
+Attempting to write a integrate AI with my google calendar to generate shopping lists as well as meals / timings on things!
