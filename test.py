@@ -8,8 +8,8 @@ import os.path
 # Define the scope of permissions you need for Google Calendar
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
-GROCERY_LIST = 
-MEAL_PLAN = 
+# GROCERY_LIST = 
+# MEAL_PLAN = 
 
 
 def main():
@@ -34,16 +34,16 @@ def main():
 
     # Define a new event
     event = {
-        'summary': 'Your Event Title',
-        'location': 'Event Location',
-        'description': 'Description of your event',
+        'summary': 'Movie Time',
+        'location': 'Dimscord',
+        'description': 'Watch thing with han',
         'start': {
             'dateTime': datetime.datetime.now().isoformat(), # use now instead of utcnow and use timezone
-            'timeZone': 'America/Los_Angeles',
+            'timeZone': 'America/Denver',
         },
         'end': {
             'dateTime': (datetime.datetime.now() + datetime.timedelta(hours=1)).isoformat(),
-            'timeZone': 'America/Los_Angeles',
+            'timeZone': 'America/Denver',
         },
     }
 
