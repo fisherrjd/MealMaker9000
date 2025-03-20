@@ -55,31 +55,22 @@ def create_grocery_list(grocery_items, tasklist_title="Grocery Shopping"):
     print("Grocery list tasks added successfully.")
 
 if __name__ == '__main__':
-    grocery_list_items = {
-        "proteins": [
-            "Chicken Breast (1.05 kg)",
-            "Ground Beef (1.05 kg)",
-            "Eggs (14)",
-            "Protein Powder (for 7 shakes)"
-        ],
-        "carbohydrates": [
-            "Sourdough Bread (294g)",
-            "Brown Rice (700g)",
-            "Sweet Potatoes (600g)",
-            "Lentils (dry, for soup)",
-            "Blackberry Jam"
-        ],
-        "vegetables": [
-            "Broccoli (450g)",
-            "Green Beans (600g)",
-            "Mixed Stir-Fry Vegetables"
-        ],
-        "fats": [
-            "Soy Sauce"
-        ],
-        "pantry": [
-            "cooking oil"
-        ]
-    }
+    grocery_list_items = [
+        "Chicken Breast (1.05 kg)",
+        "Ground Beef (1.05 kg)",
+        "Eggs (14)",
+        "Protein Powder (for 7 shakes)",
+        "Sourdough Bread (294g)",
+        "Brown Rice (700g)",
+        "Sweet Potatoes (600g)",
+        "Lentils (dry, for soup)",
+        "Blackberry Jam",
+        "Broccoli (450g)",
+        "Green Beans (600g)",
+        "Mixed Stir-Fry Vegetables",
+        "Soy Sauce",
+        "cooking oil"
+    ]
+
 
     create_grocery_list(grocery_list_items)
