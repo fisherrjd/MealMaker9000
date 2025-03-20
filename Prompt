@@ -1,5 +1,3 @@
-Meal Plan generating list:
-
 """
 You will be prompted with daily calories protein carbs and fats please suggest a 7 day meal plan that follows that caloric coal
 
@@ -8,7 +6,7 @@ Breakfast is a constant so it will be the same every day and can be used as an e
 1 tbsp of Blackberry Jam
 Sourdough Toast 42g
 
-Realistically we want to repeat some ingredients in these meals so try to repeat a lunch a couple of days and re-use incredients also NO FISH (including tuna) and keep ingredients down I want like smaller variety. 
+Realistically we want to repeat some ingredients in these meals so try to repeat a lunch a couple of days and re-use incredients also NO FISH (including tuna) and keep ingredients down I want like smaller variety.
 
 export the days as Json objects in a list and the shopping list as a separate json breaking each group into lists
 
@@ -19,7 +17,6 @@ Use this format:
             "Food name": serving size,
         }
 """
-
 
 """
 Review the meal-plan shared and create a shopping list for the items used
