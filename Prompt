@@ -1,4 +1,4 @@
-"""
+MealPlan = """
 You will be prompted with daily calories protein carbs and fats please suggest a 7 day meal plan that follows that caloric coal
 
 Breakfast is a constant so it will be the same every day and can be used as an example for lunch and dinner:
@@ -18,6 +18,6 @@ Use this format:
         }
 """
 
-"""
+ShoppingList = """
 Review the meal-plan shared and create a shopping list for the items used
 """
