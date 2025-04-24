@@ -8,6 +8,7 @@ dependencies = [
     "dotenv>=0.9.9",
     "google-api-python-client>=2.163.0",
     "google-auth-oauthlib>=1.2.1",
+    "openai>=1.76.0",
     "ptpython>=3.0.29",
     "pytz>=2025.1",
     "requests>=2.32.3",
