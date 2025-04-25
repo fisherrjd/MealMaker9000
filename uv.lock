@@ -293,6 +293,11 @@ dependencies = [
     { name = "requests" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "ptpython" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "dotenv", specifier = ">=0.9.9" },
@@ -303,6 +308,9 @@ requires-dist = [
     { name = "pytz", specifier = ">=2025.1" },
     { name = "requests", specifier = ">=2.32.3" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "ptpython", specifier = ">=3.0.29" }]
 
 [[package]]
 name = "oauthlib"
