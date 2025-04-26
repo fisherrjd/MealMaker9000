@@ -1,0 +1,24 @@
+[project]
+name = "mealmaker9000"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dotenv>=0.9.9",
+    "google-api-python-client>=2.163.0",
+    "google-auth-oauthlib>=1.2.1",
+    "openai>=1.76.0",
+    "ptpython>=3.0.29",
+    "pytz>=2025.1",
+    "requests>=2.32.3",
+]
+
+[tool.uv.workspace]
+members = ["lock"]
+
+[dependency-groups]
+dev = ["ptpython>=3.0.29"]
+
+[tool.setuptools]
+packages = ["backend"]
