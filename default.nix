@@ -20,7 +20,18 @@ let
       jfmt
       nixup
     ];
+
     uv = [ uv uvEnv ];
+    rust = [
+      cargo
+      clang
+      rust-analyzer
+      rustc
+      rustfmt
+      # deps
+      pkg-config
+      openssl
+    ];
     scripts = pkgs.lib.attrsets.attrValues scripts;
   };
 

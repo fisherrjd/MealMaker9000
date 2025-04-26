@@ -1,4 +1,0 @@
-POST https://caloriecontrol.org/wp-content/themes/ultimate-wp/calcontrol/searchFood.php
-Content-Type: application/x-www-form-urlencoded
-
-keyword=apple&page=0&ppage=10
