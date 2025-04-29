@@ -21,21 +21,18 @@ let
       nixup
     ];
     uv = [ uv uvEnv ];
-
-    rust = [
-      cargo
-      clang
-      rust-analyzer
-      rustc
-      rustfmt
-      # deps
-      pkg-config
-      openssl
-    ];
     scripts = pkgs.lib.attrsets.attrValues scripts;
   };
 
-  scripts = with pkgs; { };
+  scripts = with pkgs; {
+    test = pkgs.pog {
+      name = "test";
+      script = ''
+        cd ./backend/experimentation || exit
+        ${uvEnv}/bin/python main.py
+      '';
+    };
+  };
   paths = pkgs.lib.flatten [ (builtins.attrValues tools) ];
   env = pkgs.buildEnv {
     inherit name paths; buildInputs = paths;
