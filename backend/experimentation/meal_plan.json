@@ -1,0 +1,254 @@
+{
+    "Monday": {
+        "Breakfast": {
+            "description": "2 Fried Eggs, Whole Wheat Toast, Blackberry Jam",
+            "calories": 279,
+            "protein": 16,
+            "carbohydrates": 27.7,
+            "fats": 10.7
+        },
+        "Lunch": {
+            "description": "Grilled Chicken Breast (150g), Quinoa (150g), Steamed Broccoli (100g)",
+            "calories": 645,
+            "protein": 45,
+            "carbohydrates": 60,
+            "fats": 10
+        },
+        "Dinner": {
+            "description": "Beef Stir-Fry (150g beef, 100g bell peppers, 100g onions) with Brown Rice (150g)",
+            "calories": 740,
+            "protein": 55,
+            "carbohydrates": 70,
+            "fats": 25
+        },
+        "Snack": {
+            "description": "Greek Yogurt (200g) with Almonds (20g)",
+            "calories": 192,
+            "protein": 20,
+            "carbohydrates": 15,
+            "fats": 8
+        },
+        "Totals": {
+            "calories": 1846,
+            "protein": 151,
+            "carbohydrates": 172.7,
+            "fats": 53.7
+        }
+    },
+    "Tuesday": {
+        "Breakfast": {
+            "description": "2 Fried Eggs, Whole Wheat Toast, Blackberry Jam",
+            "calories": 279,
+            "protein": 16,
+            "carbohydrates": 27.7,
+            "fats": 10.7
+        },
+        "Lunch": {
+            "description": "Turkey and Avocado Wrap (whole wheat wrap, 2 slices turkey breast, 1/2 avocado, lettuce)",
+            "calories": 704,
+            "protein": 40,
+            "carbohydrates": 60,
+            "fats": 20
+        },
+        "Dinner": {
+            "description": "Grilled Pork Chop (150g), Roasted Sweet Potato (150g), Green Beans (100g)",
+            "calories": 717,
+            "protein": 50,
+            "carbohydrates": 73,
+            "fats": 20
+        },
+        "Snack": {
+            "description": "Carrot Sticks (100g) with Hummus (20g)",
+            "calories": 155,
+            "protein": 5,
+            "carbohydrates": 10,
+            "fats": 10
+        },
+        "Totals": {
+            "calories": 1855,
+            "protein": 121,
+            "carbohydrates": 170.7,
+            "fats": 60.7
+        }
+    },
+    "Wednesday": {
+        "Breakfast": {
+            "description": "2 Fried Eggs, Whole Wheat Toast, Blackberry Jam",
+            "calories": 279,
+            "protein": 16,
+            "carbohydrates": 27.7,
+            "fats": 10.7
+        },
+        "Lunch": {
+            "description": "Beef and Vegetable Soup (300ml) with Whole Wheat Bread (30g)",
+            "calories": 630,
+            "protein": 30,
+            "carbohydrates": 80,
+            "fats": 15
+        },
+        "Dinner": {
+            "description": "Grilled Turkey Breast (150g), Brown Rice (150g), Mixed Vegetables (100g)",
+            "calories": 721,
+            "protein": 55,
+            "carbohydrates": 60,
+            "fats": 15
+        },
+        "Snack": {
+            "description": "Apple Slices (150g) with Peanut Butter (20g)",
+            "calories": 216,
+            "protein": 8,
+            "carbohydrates": 27,
+            "fats": 16
+        },
+        "Totals": {
+            "calories": 1846,
+            "protein": 129,
+            "carbohydrates": 194.7,
+            "fats": 56.7
+        }
+    },
+    "Thursday": {
+        "Breakfast": {
+            "description": "2 Fried Eggs, Whole Wheat Toast, Blackberry Jam",
+            "calories": 279,
+            "protein": 16,
+            "carbohydrates": 27.7,
+            "fats": 10.7
+        },
+        "Lunch": {
+            "description": "Chicken Caesar Salad (150g chicken, 100g romaine lettuce, 20g croutons, Caesar dressing)",
+            "calories": 660,
+            "protein": 40,
+            "carbohydrates": 20,
+            "fats": 25
+        },
+        "Dinner": {
+            "description": "Grilled Beef (150g), Roasted Carrots (150g), Brown Rice (150g)",
+            "calories": 745,
+            "protein": 55,
+            "carbohydrates": 70,
+            "fats": 20
+        },
+        "Snack": {
+            "description": "Cottage Cheese (150g) with Cucumber Slices (100g)",
+            "calories": 162,
+            "protein": 30,
+            "carbohydrates": 5,
+            "fats": 0
+        },
+        "Totals": {
+            "calories": 1846,
+            "protein": 151,
+            "carbohydrates": 122.7,
+            "fats": 55.7
+        }
+    },
+    "Friday": {
+        "Breakfast": {
+            "description": "2 Fried Eggs, Whole Wheat Toast, Blackberry Jam",
+            "calories": 279,
+            "protein": 16,
+            "carbohydrates": 27.7,
+            "fats": 10.7
+        },
+        "Lunch": {
+            "description": "Turkey Meatball Sub (150g turkey, 1 whole wheat sub roll, marinara sauce)",
+            "calories": 690,
+            "protein": 35,
+            "carbohydrates": 70,
+            "fats": 20
+        },
+        "Dinner": {
+            "description": "Grilled Chicken Breast (150g), Quinoa (150g), Steamed Asparagus (100g)",
+            "calories": 691,
+            "protein": 50,
+            "carbohydrates": 60,
+            "fats": 15
+        },
+        "Snack": {
+            "description": "Rice Cakes (2) with Almond Butter (20g) and Banana Slices (100g)",
+            "calories": 196,
+            "protein": 8,
+            "carbohydrates": 30,
+            "fats": 16
+        },
+        "Totals": {
+            "calories": 1856,
+            "protein": 129,
+            "carbohydrates": 187.7,
+            "fats": 61.7
+        }
+    },
+    "Saturday": {
+        "Breakfast": {
+            "description": "2 Fried Eggs, Whole Wheat Toast, Blackberry Jam",
+            "calories": 279,
+            "protein": 16,
+            "carbohydrates": 27.7,
+            "fats": 10.7
+        },
+        "Lunch": {
+            "description": "Grilled Chicken Wrap (150g chicken, whole wheat wrap, lettuce, tomato)",
+            "calories": 680,
+            "protein": 40,
+            "carbohydrates": 50,
+            "fats": 20
+        },
+        "Dinner": {
+            "description": "Beef and Mushroom Stroganoff (150g beef, 100g mushrooms, 150g pasta)",
+            "calories": 727,
+            "protein": 50,
+            "carbohydrates": 80,
+            "fats": 20
+        },
+        "Snack": {
+            "description": "Protein Shake (30g protein powder, 200ml milk) with a small Apple",
+            "calories": 160,
+            "protein": 30,
+            "carbohydrates": 20,
+            "fats": 0
+        },
+        "Totals": {
+            "calories": 1846,
+            "protein": 156,
+            "carbohydrates": 177.7,
+            "fats": 50.7
+        }
+    },
+    "Sunday": {
+        "Breakfast": {
+            "description": "2 Fried Eggs, Whole Wheat Toast, Blackberry Jam",
+            "calories": 279,
+            "protein": 16,
+            "carbohydrates": 27.7,
+            "fats": 10.7
+        },
+        "Lunch": {
+            "description": "Chicken and Avocado Salad (150g chicken, 1/2 avocado, 100g mixed greens)",
+            "calories": 669,
+            "protein": 40,
+            "carbohydrates": 20,
+            "fats": 25
+        },
+        "Dinner": {
+            "description": "Grilled Pork Chop (150g), Mashed Potatoes (150g), Green Beans (100g)",
+            "calories": 734,
+            "protein": 50,
+            "carbohydrates": 80,
+            "fats": 20
+        },
+        "Snack": {
+            "description": "Greek Yogurt (200g) with Honey (20g)",
+            "calories": 174,
+            "protein": 20,
+            "carbohydrates": 30,
+            "fats": 0
+        },
+        "Totals": {
+            "calories": 1856,
+            "protein": 156,
+            "carbohydrates": 207.7,
+            "fats": 55.7
+        }
+    }
+}

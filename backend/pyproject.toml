@@ -12,14 +12,12 @@ dependencies = [
     "ptpython>=3.0.29",
     "pytz>=2025.1",
     "requests>=2.32.3",
-    "tabulate>=0.9.0",
 ]
 
 [tool.uv.workspace]
 members = ["lock"]
 
 [dependency-groups]
-dev = ["ptpython>=3.0.29"]
-
-[tool.setuptools]
-packages = ["backend"]
+dev = [
+    "ptpython>=3.0.29",
+]
