@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from typing import Final
 
 load_dotenv()
-TOKEN: Final[str] = os.getenv("LITELLM_KEY")
+TOKEN: Final[str] = os.getenv("SCOUT_KEY")
 
 client = openai.OpenAI(
     api_key=TOKEN,
