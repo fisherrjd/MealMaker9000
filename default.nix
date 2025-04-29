@@ -25,14 +25,15 @@ let
   };
 
   scripts = with pkgs; {
-    test = pkgs.pog {
-      name = "test";
+    make-meal = pkgs.pog {
+      name = "make-meal";
       script = ''
         cd ./backend/experimentation || exit
         ${uvEnv}/bin/python main.py
       '';
     };
   };
+
   paths = pkgs.lib.flatten [ (builtins.attrValues tools) ];
   env = pkgs.buildEnv {
     inherit name paths; buildInputs = paths;

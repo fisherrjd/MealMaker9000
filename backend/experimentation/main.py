@@ -1,6 +1,13 @@
 import openai
+import os
+from dotenv import load_dotenv
+from typing import Final
+
+load_dotenv()
+TOKEN: Final[str] = os.getenv("LITELLM_KEY")
+
 client = openai.OpenAI(
-    api_key="sk-_YZAQqYc-qZtAjkjs5wFIA",
+    api_key=TOKEN,
     base_url="http://eldo:4000"
 )
 
