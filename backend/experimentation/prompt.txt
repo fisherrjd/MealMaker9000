@@ -1,11 +1,18 @@
-Generate a 7-day weekly meal plan and a corresponding shopping list.
-Your primary goal is twofold:
-1. **Strict Structural Consistency:** The JSON output formats for both the meal plan and shopping list MUST be *identical* every time, adhering rigidly to the structures defined below.
-2. **Content Variability:** The specific meals generated within the plan SHOULD be *different and varied* each time this prompt is run, while always strictly adhering to the nutritional and ingredient constraints.
+Generate a 7-day weekly meal plan and a corresponding shopping list, emphasizing weight-based measurements (grams) for accuracy and consistency over volumetric measures like cups.
 
-Daily Nutritional Targets: Generate meals that collectively meet 1846 calories, 150g protein, 173g carbs, 61g fats per day. Calculate these totals accurately for the generated meals.
-Allowed Ingredients: Create diverse meals composed from: chicken, beef, eggs, grilled or steamed vegetables (e.g., broccoli, spinach, bell peppers, carrots, onions). Assume olive oil and basic seasonings (salt, pepper) are usable.
-Excluded Ingredients: Strictly exclude ALL fish and seafood (e.g., Tuna, Salmon, shrimp, etc.).  I don't love quinoa
+Your primary goal is twofold:
+1.  **Strict Structural Consistency:** The JSON output formats for both the meal plan and shopping list MUST be *identical* every time, adhering rigidly to the structures defined below.
+2.  **Content Variability:** The specific meals generated within the plan SHOULD be *different and varied* each time this prompt is run, while always strictly adhering to the nutritional and ingredient constraints.
+
+Daily Nutritional Targets: Generate meals that collectively meet {calories} calories, {protein}g protein, {carbs}g carbs, {fats}g fats per day. Calculate these totals accurately for the generated meals.
+Allowed Ingredients: Create diverse meals composed from: chicken, beef, eggs, grilled or steamed vegetables, shredded cheese (e.g., broccoli, spinach, bell peppers, carrots, onions). Assume olive oil and basic seasonings (salt, pepper) are usable. Prioritize using **grams** for portioning ingredients wherever practical.
+Excluded Ingredients: Strictly exclude ALL fish and seafood (e.g., Tuna, Salmon, shrimp, etc.). Also exclude quinoa.
+
+MANDATORY BREAKFAST: I eat the same breakfast daily: 2 eggs fried 1 slice of ancient grain toast (100 calories) and some blackberry jam
+
+Foods not to be included with Lunch: none
+Foods not to be included with Dinner: none
+
 Meal Structure: Exactly 3 meals (Breakfast, Lunch, Dinner) and 1 Snack per day for 7 days (Monday to Sunday).
 
 Meal Plan Design Strategy: Prioritize ingredient reuse within the generated week for shopping efficiency (e.g., use chicken bought for Monday also on Wednesday). However, aim for a *different combination* of meals overall compared to previous runs of this prompt. Generate novel meal ideas within the allowed ingredients and macro targets.
@@ -13,7 +20,7 @@ Meal Plan Design Strategy: Prioritize ingredient reuse within the generated week
 OUTPUT 1: Generate the Meal Plan as a JSON object.
 JSON Structure MUST be EXACTLY as follows: Top-level object with keys 'Monday' through 'Sunday'.
 Each day's value MUST be an object with EXACTLY these keys: 'Breakfast', 'Lunch', 'Dinner', 'Snack', 'Daily_Calories_Total', 'Daily_Protein', 'Daily_Carbs', 'Daily_Fats'.
-Values for meals/snacks MUST be descriptive strings detailing the specific food and estimated portions for *this generated plan* (e.g., 'Omelette (3 eggs) with Bell Peppers', '150g Pork Tenderloin with 1 cup Quinoa and Steamed Green Beans').
+Values for meals/snacks MUST be descriptive strings detailing the specific food and estimated portions for *this generated plan* (e.g., 'Omelette (3 eggs) with 1 Bell Pepper', '150g Pork Tenderloin with 100g Quinoa and Steamed Green Beans 100g').
 Values for totals MUST be strings starting with '' followed by the number and unit (e.g., ' 1980 Kcal', ' 148g', ' 205g', ' 65g'). Calculate these based on the generated meals for the day. DO NOT DEVIATE FROM THIS STRING FORMAT.
 Meal Plan Example Snippet (Follow this structure precisely, content will vary):
 '''
@@ -37,36 +44,37 @@ Meal Plan Example Snippet (Follow this structure precisely, content will vary):
 
 OUTPUT 2: Generate the Shopping List as a *separate* JSON object based *only* on the specific meal plan generated *in Output 1 of this run*.
 JSON Structure MUST be EXACTLY as follows: Top-level object with a single key 'Weekly_Shopping_List'.
-The value MUST be an object with EXACTLY these category keys (only include a key if items exist for that category in the generated plan): 'Produce', 'Meat_Protein', 'Grains_Pantry', 'Dairy_Eggs', 'Other'. DO NOT INCLUDE empty categories.
+The value MUST be an object with EXACTLY these category keys (only include a key if items exist for that category in the generated plan): 'Produce', 'Meat_Protein', 'Dairy_Eggs'. DO NOT INCLUDE empty categories. Basic pantry staples like Olive Oil, Salt, Pepper should NOT be listed.
 Under each category key, the value MUST be a JSON array of strings.
-Each string MUST list the ingredient and an estimated quantity needed for the week, derived *directly* from the unique meal plan generated above (e.g., 'Chicken Breast (1.0kg)', 'Eggs (1 dozen)', 'Spinach (2 bags)', 'Quinoa (400g)'). Quantities will vary based on the plan.
-Shopping List Example (Follow this structure precisely, content/quantities will vary):
+Each string MUST list the ingredient and an estimated quantity needed for the week, derived *directly* from the sum of ingredients in the unique meal plan generated above. Use the following quantity guidelines:
+    *   **Counts:** For items typically bought individually, estimate the count based on total grams used in the meal plan (using reasonable average weights like ~150-200g/bell pepper, ~300-400g/broccoli head, ~100-150g/onion, ~70g/carrot) and round *up* to the nearest whole number. List these items by count (e.g., 'Bell Peppers: 4', 'Broccoli: 3 heads', 'Onions: 5', 'Carrots: 10').
+    *   **Weight (grams):** For meat and poultry, list the total grams needed (e.g., 'Chicken Breast: 1250g', 'Lean Beef: 600g').
+    *   **Weight (grams) or Bags:** For spinach, list the total grams needed (e.g., 'Spinach: 500g').
+    *   **Counts:** For eggs, list the total number needed (e.g., 'Eggs: 18').
+Quantities will vary based on the specific plan generated in Output 1. **Ensure the quantities listed accurately reflect the sum of ingredients used in the generated Meal Plan (Output 1), converting grams to estimated counts where specified.**
+
+Shopping List Example (Follow this structure precisely, content/quantities will vary based on the generated plan above):
 '''
 {{
   "Weekly_Shopping_List": {{
     "Produce": [
-      "Spinach (quantity)",
-      "Broccoli (quantity)",
-      // ... other produce used ...
+      "Broccoli: 3 heads",
+      "Spinach: 500g",
+      "Bell Peppers: 4",
+      "Carrots: 10",
+      "Onions: 5"
     ],
     "Meat_Protein": [
-      "Chicken Breast (quantity)",
-      "Lean Ground Beef (quantity)",
-       // ... other meat used ...
-    ],
-    "Grains_Pantry": [
-      "Quinoa (quantity)",
-      "Brown Rice (quantity)",
-      // ... other pantry items used ...
+      "Chicken Breast: 1100g",
+      "Lean Beef: 600g"
     ],
     "Dairy_Eggs": [
-      "Eggs (quantity)"
-    ],
-    "Other": [
-      "Olive Oil (check pantry)",
-      "Salt, Pepper, Spices (check pantry)"
+      "Eggs: 21"
     ]
   }}
 }}
 '''
+
+Double check the shopping list adds up with the meal list!
+
 Ensure BOTH JSON outputs are provided, are valid, and strictly follow the specified structures. Prioritize generating a *new and different* set of meals adhering to all constraints each time. Do not add commentary outside the JSON outputs.
