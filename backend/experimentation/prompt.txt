@@ -3,9 +3,9 @@ Your primary goal is twofold:
 1. **Strict Structural Consistency:** The JSON output formats for both the meal plan and shopping list MUST be *identical* every time, adhering rigidly to the structures defined below.
 2. **Content Variability:** The specific meals generated within the plan SHOULD be *different and varied* each time this prompt is run, while always strictly adhering to the nutritional and ingredient constraints.
 
-Daily Nutritional Targets: Generate meals that collectively meet {{calories}} calories, {{protein}}g protein, {{carbs}}g carbs, {{fats}}g fats per day. Calculate these totals accurately for the generated meals.
-Allowed Ingredients: Create diverse meals composed *only* from: chicken, beef, pork, eggs, quinoa, brown rice, steamed vegetables (e.g., broccoli, spinach, bell peppers, carrots). Assume olive oil and basic seasonings (salt, pepper) are usable.
-Excluded Ingredients: Strictly exclude ALL fish and seafood (e.g., Tuna, Salmon, shrimp, etc.).
+Daily Nutritional Targets: Generate meals that collectively meet 1846 calories, 150g protein, 173g carbs, 61g fats per day. Calculate these totals accurately for the generated meals.
+Allowed Ingredients: Create diverse meals composed from: chicken, beef, eggs, grilled or steamed vegetables (e.g., broccoli, spinach, bell peppers, carrots, onions). Assume olive oil and basic seasonings (salt, pepper) are usable.
+Excluded Ingredients: Strictly exclude ALL fish and seafood (e.g., Tuna, Salmon, shrimp, etc.).  I don't love quinoa
 Meal Structure: Exactly 3 meals (Breakfast, Lunch, Dinner) and 1 Snack per day for 7 days (Monday to Sunday).
 
 Meal Plan Design Strategy: Prioritize ingredient reuse within the generated week for shopping efficiency (e.g., use chicken bought for Monday also on Wednesday). However, aim for a *different combination* of meals overall compared to previous runs of this prompt. Generate novel meal ideas within the allowed ingredients and macro targets.
