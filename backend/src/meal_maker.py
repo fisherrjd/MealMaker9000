@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
+from main import generate_meal_plan_json
 
 # 1. Initialize Flask App
 app = Flask(__name__)
 
 # 2. Define the Endpoint
-@app.route('/submit-macros', methods=['POST'])
+@app.route('/macros', methods=['POST'])
 def handle_macros():
     """
     Receives macronutrient data (calories, protein, carbs, fats)
@@ -74,8 +75,19 @@ def handle_macros():
     prot = received_data['protein']
     carb = received_data['carbs']
     fat = received_data['fats']
-    print(f"calories:{cals}")
-    return jsonify(response), 200 # 200 OK
+
+
+    json_string_result = generate_meal_plan_json(cals, prot, carb, fat)
+
+    if json_string_result:
+        # Return a tuple: (body_string, status_code, headers_dictionary)
+        # Flask automatically understands this format.
+        headers = {'Content-Type': 'application/json'}
+        return json_string_result, 200, headers
+    else:
+        # Handle the error case
+        error_payload = {"error": "Failed to generate meal plan"}
+        return jsonify(error_payload), 500
 
 # 8. Run the App
 if __name__ == '__main__':
