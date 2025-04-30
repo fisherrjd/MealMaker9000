@@ -32,6 +32,13 @@ let
         ${uvEnv}/bin/python main.py
       '';
     };
+    start = pkgs.pog {
+      name = "start";
+      script = ''
+        cd ./backend/src || exit
+        ${uvEnv}/bin/flask --app meal_maker run --host=0.0.0.0
+      '';
+    };
   };
 
   paths = pkgs.lib.flatten [ (builtins.attrValues tools) ];
