@@ -8,8 +8,6 @@ Daily Nutritional Targets: Generate meals that collectively meet {calories} calo
 Allowed Ingredients: Create diverse meals composed from: chicken, beef, eggs, grilled or steamed vegetables, shredded cheese (e.g., broccoli, spinach, bell peppers, carrots, onions). Assume olive oil and basic seasonings (salt, pepper) are usable. Prioritize using **grams** for portioning ingredients wherever practical.
 Excluded Ingredients: Strictly exclude ALL fish and seafood (e.g., Tuna, Salmon, shrimp, etc.). Also exclude quinoa.
 
-MANDATORY BREAKFAST: I eat the same breakfast daily: 2 eggs fried 1 slice of ancient grain toast (100 calories) and some blackberry jam
-
 Foods not to be included with Lunch: none
 Foods not to be included with Dinner: none
 
