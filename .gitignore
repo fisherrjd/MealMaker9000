@@ -37,7 +37,6 @@ env.bak/
 venv.bak/
 
 
-.env
 client_secrets.json
 token.json
 client_task_secret.json

@@ -4,6 +4,7 @@ from main import generate_meal_plan_json
 # 1. Initialize Flask App
 app = Flask(__name__)
 
+@a
 # 2. Define the Endpoint
 @app.route('/macros', methods=['POST'])
 def handle_macros():

@@ -28,7 +28,7 @@ let
     make-meal = pkgs.pog {
       name = "make-meal";
       script = ''
-        cd ./backend/experimentation || exit
+        cd ./backend/src || exit
         ${uvEnv}/bin/python main.py
       '';
     };
