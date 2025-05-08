@@ -9,14 +9,14 @@ load_dotenv()
 TOKEN: Final[Optional[str]] = os.getenv("SCOUT_KEY")
 if not TOKEN:
     print("Error: SCOUT_KEY environment variable not set.")
-    exit(1) # Exit if the essential API key is missing
+    exit(1)
 
 # --- Constants ---
-TEMPLATE_FILE_PATH: Final[str] = 'prompt.txt' # Assumes file is in the same directory
+TEMPLATE_FILE_PATH: Final[str] = 'prompt_v2.txt'
 API_BASE_URL: Final[str] = "http://eldo:4000"
 API_MODEL: Final[str] = "meta-llama/llama-4-scout-17b-16e-instruct"
 
-# --- Initialize OpenAI Client (once) ---
+# --- Initialize OpenAI Client ---
 try:
     client = openai.OpenAI(
         api_key=TOKEN,
@@ -26,65 +26,186 @@ except Exception as e:
     print(f"Error initializing OpenAI client: {e}")
     exit(1)
 
+# --- Structured Tool Definition ---
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "generate_structured_meal_plan_and_shopping_list",
+            "description": "Generates a 7-day meal plan and shopping list based on allowed ingredients. Strict JSON structure.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "Meal_Ideas": {
+                        "type": "object",
+                        "properties": {
+                            "Monday": {
+                                "type": "object",
+                                "properties": {
+                                    "Breakfast": {"type": "string"},
+                                    "Lunch": {"type": "string"},
+                                    "Dinner": {"type": "string"},
+                                    "Snack": {"type": "string"}
+                                },
+                                "required": ["Breakfast", "Lunch", "Dinner", "Snack"]
+                            },
+                            "Tuesday": {
+                                "type": "object",
+                                "properties": {
+                                    "Breakfast": {"type": "string"},
+                                    "Lunch": {"type": "string"},
+                                    "Dinner": {"type": "string"},
+                                    "Snack": {"type": "string"}
+                                },
+                                "required": ["Breakfast", "Lunch", "Dinner", "Snack"]
+                            },
+                            "Wednesday": {
+                                "type": "object",
+                                "properties": {
+                                    "Breakfast": {"type": "string"},
+                                    "Lunch": {"type": "string"},
+                                    "Dinner": {"type": "string"},
+                                    "Snack": {"type": "string"}
+                                },
+                                "required": ["Breakfast", "Lunch", "Dinner", "Snack"]
+                            },
+                            "Thursday": {
+                                "type": "object",
+                                "properties": {
+                                    "Breakfast": {"type": "string"},
+                                    "Lunch": {"type": "string"},
+                                    "Dinner": {"type": "string"},
+                                    "Snack": {"type": "string"}
+                                },
+                                "required": ["Breakfast", "Lunch", "Dinner", "Snack"]
+                            },
+                            "Friday": {
+                                "type": "object",
+                                "properties": {
+                                    "Breakfast": {"type": "string"},
+                                    "Lunch": {"type": "string"},
+                                    "Dinner": {"type": "string"},
+                                    "Snack": {"type": "string"}
+                                },
+                                "required": ["Breakfast", "Lunch", "Dinner", "Snack"]
+                            },
+                            "Saturday": {
+                                "type": "object",
+                                "properties": {
+                                    "Breakfast": {"type": "string"},
+                                    "Lunch": {"type": "string"},
+                                    "Dinner": {"type": "string"},
+                                    "Snack": {"type": "string"}
+                                },
+                                "required": ["Breakfast", "Lunch", "Dinner", "Snack"]
+                            },
+                            "Sunday": {
+                                "type": "object",
+                                "properties": {
+                                    "Breakfast": {"type": "string"},
+                                    "Lunch": {"type": "string"},
+                                    "Dinner": {"type": "string"},
+                                    "Snack": {"type": "string"}
+                                },
+                                "required": ["Breakfast", "Lunch", "Dinner", "Snack"]
+                            }
+                        },
+                        "required": [
+                            "Monday", "Tuesday", "Wednesday",
+                            "Thursday", "Friday", "Saturday", "Sunday"
+                        ]
+                    },
+                    "Weekly_Shopping_List": {
+                        "type": "object",
+                        "properties": {
+                            "Produce": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            },
+                            "Meat_Protein": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            },
+                            "Dairy_Eggs": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            },
+                            "Pantry": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            }
+                        },
+                        "additionalProperties": False
+                    }
+                },
+                "required": ["Meal_Ideas", "Weekly_Shopping_List"]
+            }
+        }
+    }
+]
+
+
 
 def generate_meal_plan_json(
     prompt_template_path: str = TEMPLATE_FILE_PATH
-) -> Optional[str]:
+) -> Optional[dict]:
     """
-    Generates a meal plan based on nutritional macros using an OpenAI-compatible API.
-
-    Args:
-        prompt_template_path: Path to the prompt template file.
-
-    Returns:
-        A string containing the first JSON object (meal plan) from the API response,
-        or None if an error occurred during generation or processing.
+    Generates a 7-day meal plan and shopping list using structured output.
+    Returns structured dict, or None on error.
     """
-    # --- Load the prompt template ---
     try:
         with open(prompt_template_path, 'r', encoding='utf-8') as f:
             prompt_template = f.read()
-    except FileNotFoundError:
-        print(f"Error: Prompt template file not found at '{prompt_template_path}'")
-        return None
     except Exception as e:
-        print(f"Error reading prompt template file '{prompt_template_path}': {e}")
+        print(f"Error loading prompt: {e}")
         return None
 
-
-    # --- Make the API Call ---
     try:
         completion = client.chat.completions.create(
             model=API_MODEL,
             messages=[
-                 {"role": "system", "content": "You are a helpful assistant skilled in creating structured meal plans according to specific nutritional targets and formatting rules. You MUST output the meal plan as a valid JSON object FIRST, followed potentially by other text or JSON."}, # Adjusted system prompt slightly
                 {
-                    "role": "user",
-                    "content": prompt_template
+                    "role": "system",
+                    "content": (
+                        "You are a structured meal planner that outputs JSON following the exact format required. "
+                        "Always vary the meals, never vary the breakfast, and never include disallowed ingredients. "
+                        "Output both 'Meal_Ideas' and 'Weekly_Shopping_List' as JSON keys."
+                    )
                 },
+                {"role": "user", "content": prompt_template}
             ],
+            tools=tools,
+            tool_choice="auto",
             temperature=0.7
         )
-        response_content = completion.choices[0].message.content
-        print(response_content)
 
+        tool_calls = completion.choices[0].message.tool_calls
+        if not tool_calls:
+            print("No structured output returned.")
+            return None
 
+        arguments_str = tool_calls[0].function.arguments
+        structured_output = json.loads(arguments_str)
+
+        # Optional: print both parts
+        print("\n=== Meal Plan ===")
+        print(json.dumps(structured_output["Meal_Ideas"], indent=2))
+        print("\n=== Shopping List ===")
+        print(json.dumps({"Weekly_Shopping_List": structured_output["Weekly_Shopping_List"]}, indent=2))
+
+        return structured_output
+
+    except json.JSONDecodeError as e:
+        print(f"JSON parsing failed: {e}")
+        return None
     except openai.APIConnectionError as e:
-        print(f"Error connecting to API at {client.base_url}: {e}")
+        print(f"API connection error: {e}")
         return None
-    # ... (other specific exception handling remains the same) ...
     except Exception as e:
-        print(f"An unexpected error occurred during the API call: {e}")
-        return None
-
-    if not response_content:
-        print("Error: API returned an empty response.")
+        print(f"Unexpected error: {e}")
         return None
 
 
-
-
-# --- Example Usage (demonstrates calling the function) ---
+# --- Run Example ---
 if __name__ == "__main__":
-    # Call the function - it will return the string or None
-    meal_plan_json_string = generate_meal_plan_json()
+    generate_meal_plan_json()
