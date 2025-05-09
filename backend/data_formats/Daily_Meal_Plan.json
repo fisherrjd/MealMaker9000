@@ -1,49 +1,28 @@
 {
-    "day": "Monday",
     "breakfast": {
         "items": [
             "2 eggs",
             "1 tbsp Blackberry Jam",
             "Sourdough Toast (42g)"
-        ],
-        "calories": 280,
-        "protein": 17,
-        "fat": 14,
-        "carbs": 20
+        ]
     },
     "lunch": {
         "items": [
             "Chicken Breast (150g)",
             "Brown Rice (100g)",
             "Broccoli (150g)"
-        ],
-        "calories": 450,
-        "protein": 45,
-        "fat": 5,
-        "carbs": 55
+        ]
     },
     "dinner": {
         "items": [
             "Ground Beef (150g)",
             "Sweet Potato (200g)",
             "Green Beans (100g)"
-        ],
-        "calories": 630,
-        "protein": 35,
-        "fat": 30,
-        "carbs": 60
+        ]
     },
     "snacks": {
         "items": [
             "Protein Shake (30g protein)"
-        ],
-        "calories": 200,
-        "protein": 30,
-        "fat": 5,
-        "carbs": 10
-    },
-    "total_calorie": 1560,
-    "total_protein": 127,
-    "total_carb": 145,
-    "total_fats": 94
+        ]
+    }
 }
