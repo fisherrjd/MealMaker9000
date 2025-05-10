@@ -18,7 +18,7 @@ if not TOKEN:
 
 # --- Constants ---
 TEMPLATE_FILE_PATH: Final[str] = 'prompt_v2.txt'
-API_BASE_URL: Final[str] = "http://eldo:4000" # Replace if needed
+API_BASE_URL: Final[str] = "https://litellm.jade.rip/" # Replace if needed
 API_MODEL: Final[str] = "meta-llama/llama-4-scout-17b-16e-instruct" # Replace if needed
 
 # --- Initialize OpenAI Client ---
@@ -39,7 +39,7 @@ def generate_meal_plan_template():
 
 
 def call_openAI():
-    print("TODO: generate_meal_plan_template")
+    print("TODO: call LLM to generate meal")
 
 # --- Run Example ---
 if __name__ == "__main__":
