@@ -34,8 +34,14 @@ except Exception as e:
 # The 'tools' variable below will now use the imported definition
 # tools = MEAL_PLANNER_TOOL # This line is effectively handled by using MEAL_PLANNER_TOOL directly in the API call
 
-def generate_meal_plan_json()
+def generate_meal_plan_template():
+    print("TODO: generate_meal_plan_template")
+
+
+def call_openAI():
+    print("TODO: generate_meal_plan_template")
 
 # --- Run Example ---
 if __name__ == "__main__":
- 
+    generate_meal_plan_template()
+    call_openAI()
